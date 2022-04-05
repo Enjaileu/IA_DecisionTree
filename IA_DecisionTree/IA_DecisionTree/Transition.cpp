@@ -11,3 +11,5 @@ Transition::Transition(State& targetStateP):
 	targetState{targetState}{}
 
 
+bool Transition::IsTriggered() { return isTriggered; }
+

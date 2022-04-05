@@ -6,7 +6,7 @@
 int main() {
 
 	State wakeUp;
-	Transition wakeUpTr;
+	Transition wakeUpTr{ wakeUp };
 	wakeUp.AddTransition(&wakeUpTr);
  
 	return 0;
