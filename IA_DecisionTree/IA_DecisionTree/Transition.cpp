@@ -6,10 +6,7 @@ using std::string;
 Transition::Transition():
 	targetState{nullptr}{}
 
-
 Transition::Transition(State& targetStateP):
 	targetState{targetState}{}
 
-
 bool Transition::IsTriggered() { return isTriggered; }
-
