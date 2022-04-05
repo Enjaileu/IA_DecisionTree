@@ -8,12 +8,11 @@ class Transition
 {
 public:
 	Transition();
-	Transition(State& targetStateP, Condition conditionP);
+	Transition(State& targetStateP, Condition* conditionP);
 	bool IsTriggered();
 
 protected:
 	State* targetState;
-	bool isTriggered{ false };
-	Condition condition;
+	Condition* condition{ nullptr };
 };
 

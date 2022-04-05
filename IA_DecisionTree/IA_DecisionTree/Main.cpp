@@ -6,10 +6,13 @@
 
 int main() {
 	int hour = 0;
+	int* hourPtr = &hour;
 
 	State wakeUp;
-	HourCondition wakeUpCond{ hour, 9 };
-	Transition wakeUpTr{ wakeUp, wakeUpCond };
+	State sleep;
+
+	HourCondition wakeUpCond{ hourPtr, 9 };
+	Transition wakeUpTr{ sleep, &wakeUpCond };
 	wakeUp.AddTransition(&wakeUpTr);
  
 	return 0;

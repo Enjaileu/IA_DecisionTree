@@ -2,13 +2,13 @@
 class Condition
 {
 public:
-	bool test();
+	virtual bool Test() = 0;
 };
 
 class HourCondition : public Condition {
 public:
-	HourCondition(int testValueP, int hourP);
-	int testValue;
+	HourCondition(int* testValueP, int hourP);
+	int* testValue;
 	int hour;
 
 	bool Test();

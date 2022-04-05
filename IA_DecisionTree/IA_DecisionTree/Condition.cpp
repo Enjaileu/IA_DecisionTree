@@ -1,7 +1,9 @@
 #include "Condition.h"
 
-HourCondition::HourCondition(int testValueP, int hourP) :
+//bool Condition::Test() { return false; }
+
+HourCondition::HourCondition(int* testValueP, int hourP) :
 	testValue{testValueP},
 	hour{hourP}{}
 
-bool HourCondition::Test() { return testValue >= hour; }
+bool HourCondition::Test() { return *testValue >= hour; }
