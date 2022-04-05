@@ -1,12 +1,13 @@
 #pragma once
 class Condition
 {
+public:
 	bool test();
 };
 
 class HourCondition : public Condition {
-
-	HourCondition(int testValueP, int hour);
+public:
+	HourCondition(int testValueP, int hourP);
 	int testValue;
 	int hour;
 

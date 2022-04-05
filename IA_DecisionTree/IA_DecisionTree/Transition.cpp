@@ -6,7 +6,8 @@ using std::string;
 Transition::Transition():
 	targetState{nullptr}{}
 
-Transition::Transition(State& targetStateP):
-	targetState{targetState}{}
+Transition::Transition(State& targetStateP, Condition conditionP) :
+	targetState{ targetState },
+	condition{conditionP}{}
 
 bool Transition::IsTriggered() { return isTriggered; }
