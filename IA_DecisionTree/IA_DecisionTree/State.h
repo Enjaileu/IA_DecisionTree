@@ -1,18 +1,15 @@
 #pragma once
 #include <iostream>
 #include <vector>
-
-class Transition;
+#include "Transition.h"
 
 class State
 {
 public:
-	State(std::string nameP);
-	void GetActions();
-	void GetExitAction();
-	void GetEntryAction();
+	State();
+	void AddTransition(Transition* transition);
 
 protected:
-	std::vector<Transition> transitions;
+	std::vector<Transition*> transitions;
 };
 

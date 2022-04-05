@@ -1,19 +1,15 @@
 #pragma once
-#include "State.h"
-#include "Condition.h"
+#include<string>
+
+class State;
 
 class Transition
 {
 public:
 	Transition();
-	void GetAction();
-	void IsTriggered();
-	State GetTargetState();
+	Transition(State& targetStateP);
 
 protected:
-	bool triggered{ false };
-	Condition condition;
-	int action;
-	State targetState;
+	State* targetState;
 };
 
