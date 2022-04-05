@@ -11,3 +11,5 @@ Transition::Transition(State& targetStateP, Condition* conditionP) :
 	condition{conditionP}{}
 
 bool Transition::IsTriggered() { return condition->Test(); }
+
+State* Transition::GetTargetState() { return targetState; }

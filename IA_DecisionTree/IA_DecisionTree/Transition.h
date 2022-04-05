@@ -10,6 +10,7 @@ public:
 	Transition();
 	Transition(State& targetStateP, Condition* conditionP);
 	bool IsTriggered();
+	State* GetTargetState();
 
 protected:
 	State* targetState;

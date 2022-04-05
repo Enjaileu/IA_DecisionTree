@@ -6,10 +6,14 @@
 class State
 {
 public:
-	State();
+	State(std::string action);
 	void AddTransition(Transition* transition);
+	void Execute();
+	int IsTransitionTriggered();
+	Transition* GetTransition(int index);
 
 protected:
 	std::vector<Transition*> transitions;
+	std::string action;
 };
 
