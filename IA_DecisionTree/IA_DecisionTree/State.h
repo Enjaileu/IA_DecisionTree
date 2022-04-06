@@ -6,7 +6,7 @@
 class State
 {
 public:
-	State(std::string action);
+	State();
 	void AddTransition(Transition* transition);
 	void Execute();
 	int IsTransitionTriggered();
@@ -14,6 +14,5 @@ public:
 
 protected:
 	std::vector<Transition*> transitions;
-	std::string action;
 };
 

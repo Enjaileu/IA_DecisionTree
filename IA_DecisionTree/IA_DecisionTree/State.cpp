@@ -3,15 +3,13 @@
 #include <iostream>
 using namespace std;
 
-State::State(const std::string actionP) :
-	action{actionP}{}
+State::State(){}
 
 void State::AddTransition(Transition* tr) {
 	transitions.push_back(tr);
 }
 
 void State::Execute() {
-	cout << action << endl;
 }
 
 int State::IsTransitionTriggered() {

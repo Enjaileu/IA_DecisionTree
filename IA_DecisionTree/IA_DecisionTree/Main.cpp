@@ -1,35 +1,15 @@
 #include <iostream>
-#include "Utility.h"
-#include "State.h"
-#include "Transition.h"
-#include "Condition.h"
-#include "StateMachine.h"
+#include "Attack.h"
 
 int main() {
 
-	int hour = 0;
-	int* hourPtr = &hour;
-	//definition state machine
+	Attack attack01{ 1, 70, false, 100 };
+	Attack attack02{ 2, 99999, true, 200 };
+	Attack attack03{ 3, 50, true, 150 };
+	Attack attack04{ 4, 100, false, 50 };
+	Attack attack05{ 5, 70, false, 100 };
+	Attack attack07{ 7, 100, true, 33 };
 
-	State wakeUp{ "Il dortw." };
-	State sleep{ "Il dort." };
-
-	HourCondition wakeUpCond{ hourPtr, 22 };
-	Transition wakeUpTr{ sleep, &wakeUpCond };
-	wakeUp.AddTransition(&wakeUpTr);
-
-	HourCondition sleepCond{ hourPtr, 9 };
-	Transition sleepTr{ wakeUp, &sleepCond };
-	sleep.AddTransition(&sleepTr);
-
-	State* statePtr = &sleep;
-	StateMachine sm{ statePtr };
-
-	// test
-	Utility::DisplayHour(hour);
-	hour += 10;
-	Utility::DisplayHour(hour);
-	sm.Update();
  
 	return 0;
 }

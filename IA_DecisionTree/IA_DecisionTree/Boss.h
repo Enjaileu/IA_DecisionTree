@@ -1,18 +1,15 @@
 #pragma once
-#include "Character.h"
 #include "StateMachine.h"
 #include <iostream>
-class Boss :
-    public Character
-{
+class Boss{
 public:
-    Boss(std::string nameP, int PVp, int PMp,  const StateMachine& stateMachineP);
+    Boss(std::string nameP, int PVp,  const StateMachine& stateMachineP);
     void GetAction();
 
 protected :
     std::string name;
     int PV;
-    int PM;
     StateMachine& StateMachine;
+    float attackDl{ 0 };
 };
 
