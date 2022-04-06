@@ -9,6 +9,7 @@ public:
     Boss(std::string nameP, int PVp,  const StateMachine* smP);
     Attack* GetLoadingAttack();
     bool* IsInterupted();
+    int* GetWaintingTime();
 
 protected :
     std::string name;
@@ -17,5 +18,6 @@ protected :
     const StateMachine* sm;
     float attackDl{ 0 };
     Attack* loadingAttack{ nullptr };
+    int waitingTime{ 0 };
 };
 

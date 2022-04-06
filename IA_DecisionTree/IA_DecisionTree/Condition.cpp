@@ -22,3 +22,8 @@ IsTrueCondition::IsTrueCondition(bool* valueP):
 	value{valueP}{}
 
 bool IsTrueCondition::Test() { return *value = true; }
+
+IsEqualZeroCondition::IsEqualZeroCondition(int* valueP):
+	value{valueP}{}
+
+bool IsEqualZeroCondition::Test() { return *value == 0; }

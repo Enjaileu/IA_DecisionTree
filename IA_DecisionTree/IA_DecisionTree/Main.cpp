@@ -4,7 +4,6 @@
 #include "StateMachine.h"
 
 int main() {
-	int waintingTime = 0;
 	Boss ella{};
 
 	Attack attack01{ 1, 70, false, 100 };
@@ -23,6 +22,7 @@ int main() {
 	IsTrueCondition isInteruptedCondition{ ella.IsInterupted() };
 	IsTrueCondition isCancellable{ ella.GetLoadingAttack()->IsConcellable() };
 	AndCondition interuptAndCancellableCondition{ &isInteruptedCondition, &isCancellable };
+	IsEqualZeroCondition waitFinish{ ella.GetWaintingTime() };
 
 	Transition fromChooseToWait{ &waiting, &trueCondition };
 	Transition fromWaitingToGoBack{ &goBack, &interuptAndCancellableCondition };

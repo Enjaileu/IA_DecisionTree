@@ -37,3 +37,11 @@ public:
 private:
 	bool* value;
 };
+
+class IsEqualZeroCondition : public Condition {
+public:
+	IsEqualZeroCondition(int* valueP);
+	bool Test();
+private:
+	int* value;
+};

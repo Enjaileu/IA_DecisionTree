@@ -12,3 +12,5 @@ Boss::Boss(string nameP, int PVp, const StateMachine* smP):
 Attack* Boss::GetLoadingAttack() { return loadingAttack; }
 
 bool* Boss::IsInterupted() { return &interupted ; }
+
+int* Boss::GetWaintingTime() { return &waitingTime; }
