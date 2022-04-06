@@ -29,3 +29,11 @@ private:
 	Condition* conditionA;
 	Condition* conditionB;
 };
+
+class IsTrueCondition : public Condition {
+public:
+	IsTrueCondition(bool* valueP);
+	bool Test();
+private:
+	bool* value;
+};

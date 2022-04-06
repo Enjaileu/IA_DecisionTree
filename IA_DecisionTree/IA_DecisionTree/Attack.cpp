@@ -5,3 +5,5 @@ Attack::Attack(int nameP, int damageP, bool cancelledP, int waitingTimeP):
 	damage{damageP},
 	cancelled{cancelledP},
 	waitingTime{waitingTimeP}{}
+
+bool* Attack::IsConcellable() { return &cancelled; }

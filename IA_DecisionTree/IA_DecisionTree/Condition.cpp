@@ -17,3 +17,8 @@ OrCondition::OrCondition(Condition* conditionAp, Condition* conditionBp) :
 	conditionB{ conditionBp }{}
 
 bool OrCondition::Test() { return conditionA || conditionB; }
+
+IsTrueCondition::IsTrueCondition(bool* valueP):
+	value{valueP}{}
+
+bool IsTrueCondition::Test() { return *value = true; }

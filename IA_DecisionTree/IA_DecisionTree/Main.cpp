@@ -5,6 +5,7 @@
 
 int main() {
 	int waintingTime = 0;
+	Boss ella{};
 
 	Attack attack01{ 1, 70, false, 100 };
 	Attack attack02{ 2, 99999, true, 200 };
@@ -19,19 +20,19 @@ int main() {
 	State attack{};
 
 	TrueCondition trueCondition;
-	TrueCondition* trueConditionPtr = &trueCondition;
+	IsTrueCondition isInteruptedCondition{ ella.IsInterupted() };
+	IsTrueCondition isCancellable{ ella.GetLoadingAttack()->IsConcellable() };
+	AndCondition interuptAndCancellableCondition{ &isInteruptedCondition, &isCancellable };
 
-	Transition fromChooseToWait{ &waiting, trueConditionPtr };
-
+	Transition fromChooseToWait{ &waiting, &trueCondition };
+	Transition fromWaitingToGoBack{ &goBack, &interuptAndCancellableCondition };
 
 	chooseAttack.AddTransition(&fromChooseToWait);
+	waiting.AddTransition(&fromWaitingToGoBack);
 
 	StateMachine sm{ &chooseAttack };
-	StateMachine* smPtr = &sm;
 
-	Boss ella{ "Ella", 1500, smPtr };
+	ella = { "Ella", 1500, &sm };
 
-
- 
 	return 0;
 }
