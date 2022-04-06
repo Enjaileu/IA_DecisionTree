@@ -4,6 +4,7 @@
 #include "StateMachine.h"
 
 int main() {
+	int waintingTime = 0;
 
 	Attack attack01{ 1, 70, false, 100 };
 	Attack attack02{ 2, 99999, true, 200 };
@@ -13,11 +14,23 @@ int main() {
 	Attack attack07{ 7, 100, true, 33 };
 
 	State chooseAttack{};
-	State* chooseAttackPtr = &chooseAttack;
+	State waiting{};
+	State goBack{};
+	State attack{};
 
-	StateMachine sm{ chooseAttackPtr };
+	TrueCondition trueCondition;
+	TrueCondition* trueConditionPtr = &trueCondition;
 
-	Boss Ella{ "Ella", 1500, sm };
+	Transition fromChooseToWait{ &waiting, trueConditionPtr };
+
+
+	chooseAttack.AddTransition(&fromChooseToWait);
+
+	StateMachine sm{ &chooseAttack };
+	StateMachine* smPtr = &sm;
+
+	Boss ella{ "Ella", 1500, smPtr };
+
 
  
 	return 0;

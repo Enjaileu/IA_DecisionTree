@@ -2,13 +2,18 @@
 #include <iostream>
 using namespace std;
 
-//bool Condition::Test() { return false; }
+TrueCondition::TrueCondition(){}
 
-HourCondition::HourCondition(int* testValueP, int hourP) :
-	testValue{testValueP},
-	hour{hourP}{}
+bool TrueCondition::Test() { return true; }
 
-bool HourCondition::Test() { 
-	cout << *testValue << endl;
-	cout << hour << endl;
-	return *testValue >= hour; }
+AndCondition::AndCondition(Condition* conditionAp, Condition* conditionBp):
+	conditionA{conditionAp},
+	conditionB{conditionBp}{}
+
+bool AndCondition::Test() { return conditionA->Test() && conditionB->Test(); }
+
+OrCondition::OrCondition(Condition* conditionAp, Condition* conditionBp) :
+	conditionA{ conditionAp },
+	conditionB{ conditionBp }{}
+
+bool OrCondition::Test() { return conditionA || conditionB; }

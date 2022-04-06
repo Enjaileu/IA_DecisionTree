@@ -5,12 +5,27 @@ public:
 	virtual bool Test() = 0;
 };
 
-class HourCondition : public Condition {
+class TrueCondition : public Condition {
 public:
-	HourCondition(int* testValueP, int hourP);
-	int* testValue;
-	int hour;
-
+	TrueCondition();
 	bool Test();
 };
 
+class AndCondition : public Condition {
+public:
+	AndCondition(Condition* conditionAp, Condition* conditionBp);
+	bool Test();
+private:
+	Condition* conditionA;
+	Condition* conditionB;
+
+};
+
+class OrCondition : public Condition {
+public:
+	OrCondition(Condition* conditionAp, Condition* conditionBp);
+	bool Test();
+private:
+	Condition* conditionA;
+	Condition* conditionB;
+};

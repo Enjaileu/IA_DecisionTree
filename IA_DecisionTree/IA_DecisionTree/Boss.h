@@ -4,13 +4,13 @@
 
 class Boss{
 public:
-    Boss(std::string nameP, int PVp, StateMachine* smP);
+    Boss(std::string nameP, int PVp,  const StateMachine* smP);
     void GetAction();
 
 protected :
     std::string name;
     int PV;
-    StateMachine* StateMachine;
+    const StateMachine* sm;
     float attackDl{ 0 };
 };
 
