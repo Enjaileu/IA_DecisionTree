@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HearderFiles">
+      <UniqueIdentifier>{1346e548-6598-45c2-8edf-61e99dc9b6d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="State.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>HearderFiles</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
