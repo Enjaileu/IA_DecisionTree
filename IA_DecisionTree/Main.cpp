@@ -4,9 +4,21 @@
 #include "Attack.h"
 #include "Boss.h"
 #include "StateMachine.h"
+#include "Player.h"
+
+// DEFINITIONS
+
+void Load(Boss& boss, Player& player);
+void Update(Boss& boss, Player& player);
+void Draw(Boss& boss, Player& player);
+void Unload(Boss& boss, Player& player);
+
+//CODE 
 
 int main() {
+	//load -------------------------
 	Boss ella{};
+	Player player;
 
 	Attack attack01{ 1, 70, false, 100 };
 	Attack attack02{ 2, 99999, true, 200 };
@@ -41,7 +53,43 @@ int main() {
 
 	StateMachine sm{ &chooseAttack };
 
-	ella = { "Ella", 1500, &sm };
+	ella = { "Ella", 1500, &sm, "Ressources/BossAigle.png", 600, 100};
+
+	Load(ella, player);
+
+	//game loop 
+	while (!WindowShouldClose()) {
+		Update(ella, player);
+		Draw(ella, player);
+	}
+
+	//unload
+	Unload(ella, player);
 
 	return 0;
+}
+
+void Load(Boss& boss, Player& player) {
+	InitWindow(1080, 720, "Boss fight");
+	SetTargetFPS(60);
+	boss.Load();
+}
+
+void Draw(Boss& boss, Player& player) {
+	BeginDrawing();
+	ClearBackground(BLACK);
+	
+	boss.Draw();
+
+	EndDrawing();
+}
+
+void Update(Boss& boss, Player& player) {
+	boss.Update();
+	float dt = GetFrameTime();
+}
+
+void Unload(Boss& boss, Player& player) {
+	boss.Unload();
+	CloseWindow();
 }

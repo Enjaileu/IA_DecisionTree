@@ -2,15 +2,20 @@
 #include "StateMachine.h"
 #include "Attack.h"
 #include <iostream>
+#include "Sprite.h"
 
-class Boss {
+class Boss :  public Sprite {
 public:
     Boss();
-    Boss(std::string nameP, int PVp, const StateMachine* smP);
+    Boss(std::string nameP, int PVp, const StateMachine* smP, std::string pathP, float xP, float yP);
     Attack* GetLoadingAttack();
     bool* IsInterupted();
     int* GetWaintingTime();
     void UseAttack();
+    void Load();
+    void Draw();
+    void Update();
+    void Unload();
 
 protected:
     std::string name;
