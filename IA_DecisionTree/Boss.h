@@ -2,9 +2,9 @@
 #include "StateMachine.h"
 #include "Attack.h"
 #include <iostream>
-#include "Sprite.h"
+#include "Character.h"
 
-class Boss :  public Sprite {
+class Boss :  public Character {
 public:
     Boss();
     Boss(std::string nameP, int PVp, const StateMachine* smP, std::string pathP, float xP, float yP);
@@ -18,7 +18,6 @@ public:
     void Unload();
 
 protected:
-    std::string name;
     int PV;
     bool interupted{ false };
     const StateMachine* sm;

@@ -36,6 +36,7 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="State.h">
@@ -65,6 +66,7 @@
     <ClInclude Include="resource.h">
       <Filter>HearderFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="IA_DecisionTree.rc" />

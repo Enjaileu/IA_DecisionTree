@@ -5,8 +5,7 @@ using namespace std;
 Boss::Boss() {}
 
 Boss::Boss(string nameP, int PVp, const StateMachine* smP, string pathP, float xP, float yP) :
-	Sprite(pathP, xP, yP),
-	name{ nameP },
+	Character(nameP, pathP, xP, yP),
 	PV{ PVp },
 	sm{ smP }{}
 
@@ -21,15 +20,15 @@ void Boss::UseAttack() {
 }
 
 void Boss::Load() {
-	Sprite::Load();
+	Character::Load();
 }
 
 void Boss::Draw() {
-	Sprite::Draw();
+	Character::Draw();
 }
 
 void Boss::Update(){}
 
 void Boss::Unload() {
-	Sprite::Unload();
+	Character::Unload();
 }

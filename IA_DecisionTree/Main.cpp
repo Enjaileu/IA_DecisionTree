@@ -53,7 +53,7 @@ int main() {
 
 	StateMachine sm{ &chooseAttack };
 
-	ella = { "Ella", 1500, &sm, "Ressources/BossAigle.png", 600, 100};
+	ella = { "Ella", 1500, &sm, "Ressources/BossAigle.png", 600, 60};
 
 	Load(ella, player);
 
@@ -79,6 +79,7 @@ void Draw(Boss& boss, Player& player) {
 	BeginDrawing();
 	ClearBackground(BLACK);
 	
+	DrawRectangle(0, 600, 1080, 120, RED);
 	boss.Draw();
 
 	EndDrawing();
