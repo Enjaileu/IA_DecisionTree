@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "Transition.h"
+#include "Action.h"
 
 class State
 {
@@ -11,8 +12,10 @@ public:
 	void Execute();
 	int IsTransitionTriggered();
 	Transition* GetTransition(int index);
+	void SetAction(Action* actionP);
 
 protected:
 	std::vector<Transition*> transitions;
+	Action* action;
 };
 

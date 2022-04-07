@@ -4,7 +4,7 @@ using namespace std;
 
 Boss::Boss() {}
 
-Boss::Boss(string nameP, int PVp, const StateMachine* smP, string pathP, float xP, float yP) :
+Boss::Boss(string nameP, int PVp, StateMachine* smP, string pathP, float xP, float yP) :
 	Character(nameP, pathP, xP, yP),
 	PV{ PVp },
 	sm{ smP }{}
@@ -29,8 +29,12 @@ void Boss::Draw() {
 	Character::Draw();
 }
 
-void Boss::Update(){}
+void Boss::Update(){
+	sm->Update();
+}
 
 void Boss::Unload() {
 	Character::Unload();
 }
+
+vector<Attack*> Boss::GetAttacks() { return attacks; }

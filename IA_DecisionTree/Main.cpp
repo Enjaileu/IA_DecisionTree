@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Sprite.h"
 #include <vector>
+#include "Action.h"
 
 using namespace std;
 
@@ -64,6 +65,9 @@ int main() {
 	vector<Attack*> attacks{ &attack01, &attack03 , &attack04 , &attack05 , &attack07 };
 	ella.SetAttacks(attacks);
 
+	ChooseAttackAction chooseAction{ ella.GetAttacks(), ella.GetLoadingAttack() };
+	chooseAttack.SetAction(&chooseAction);
+
 	Load();
 
 	//game loop 
@@ -91,7 +95,8 @@ void Draw() {
 	BeginDrawing();
 	ClearBackground(BLACK);
 
-	DrawRectangle(0, 600, 1080, 120, RED);
+	DrawRectangle(0, 0, 1080, 720, SKYBLUE);
+	DrawRectangle(0, 600, 1080, 120, GREEN);
 	ella.Draw();
 	player.Draw();
 

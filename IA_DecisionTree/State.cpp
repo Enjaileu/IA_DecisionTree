@@ -10,6 +10,7 @@ void State::AddTransition(Transition* tr) {
 }
 
 void State::Execute() {
+	action->Execute();
 }
 
 int State::IsTransitionTriggered() {
@@ -22,3 +23,5 @@ int State::IsTransitionTriggered() {
 }
 
 Transition* State::GetTransition(int index) { return transitions[index]; }
+
+void State::SetAction(Action* actionP) { action = actionP; }

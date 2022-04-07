@@ -8,7 +8,7 @@
 class Boss :  public Character {
 public:
     Boss();
-    Boss(std::string nameP, int PVp, const StateMachine* smP, std::string pathP, float xP, float yP);
+    Boss(std::string nameP, int PVp, StateMachine* smP, std::string pathP, float xP, float yP);
     Attack* GetLoadingAttack();
     bool* IsInterupted();
     int* GetWaintingTime();
@@ -17,13 +17,13 @@ public:
     void Draw();
     void Update();
     void Unload();
-
     void SetAttacks(std::vector<Attack*> attacks);
+    std::vector<Attack*> GetAttacks();
 
 protected:
     int PV;
     bool interupted{ false };
-    const StateMachine* sm;
+    StateMachine* sm;
     float attackDl{ 0 };
     Attack* loadingAttack{ nullptr };
     int waitingTime{ 0 };
