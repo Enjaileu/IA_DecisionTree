@@ -21,7 +21,6 @@ void Player::Update(){
 	}
 	else {
 		stopGame = true;
-		wait = 130;
 	}
 }
 
@@ -36,4 +35,7 @@ void Player::Unload() {
 
 bool Player::GetStopGame() { return stopGame; }
 
-void Player::PlayGame() { stopGame = false; }
+void Player::PlayGame() { 
+	stopGame = false;
+	wait = 130;
+}

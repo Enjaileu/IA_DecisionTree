@@ -3,6 +3,7 @@
 #include "Attack.h"
 #include <iostream>
 #include "Character.h"
+#include <vector>
 
 class Boss :  public Character {
 public:
@@ -17,6 +18,8 @@ public:
     void Update();
     void Unload();
 
+    void SetAttacks(std::vector<Attack*> attacks);
+
 protected:
     int PV;
     bool interupted{ false };
@@ -24,5 +27,7 @@ protected:
     float attackDl{ 0 };
     Attack* loadingAttack{ nullptr };
     int waitingTime{ 0 };
+
+    std::vector<Attack*> attacks;
 };
 

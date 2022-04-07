@@ -19,6 +19,8 @@ void Boss::UseAttack() {
 	cout << name << " use her attack " << loadingAttack->GetName() << " and inflict " << loadingAttack->GetDamage() << " damages!" << endl;
 }
 
+void Boss::SetAttacks(vector<Attack*> attacksP) { attacks = attacksP; }
+
 void Boss::Load() {
 	Character::Load();
 }

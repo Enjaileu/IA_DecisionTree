@@ -6,6 +6,7 @@
 #include "StateMachine.h"
 #include "Player.h"
 #include "Sprite.h"
+#include <vector>
 
 using namespace std;
 
@@ -24,14 +25,6 @@ Sprite potionBtn{ "Ressources/BoutonPotion.png", 280, 600 };
 
 int main() {
 	//load -------------------------
-
-
-	Attack attack01{ 1, 70, false, 100 };
-	Attack attack02{ 2, 99999, true, 200 };
-	Attack attack03{ 3, 50, true, 150 };
-	Attack attack04{ 4, 100, false, 50 };
-	Attack attack05{ 5, 70, false, 100 };
-	Attack attack07{ 7, 100, true, 33 };
 
 	State chooseAttack{};
 	State waiting{};
@@ -61,6 +54,15 @@ int main() {
 
 	ella = { "Ella", 1500, &sm, "Ressources/BossAigle.png", 600, 60};
 	player = { "Player", 625, "Ressources/Player.png", 30, 205 };
+
+	Attack attack01{ 1, 70, false, 100 };
+	Attack attack02{ 2, 99999, true, 200 };
+	Attack attack03{ 3, 50, true, 150 };
+	Attack attack04{ 4, 100, false, 50 };
+	Attack attack05{ 5, 70, false, 100 };
+	Attack attack07{ 7, 100, true, 33 };
+	vector<Attack*> attacks{ &attack01, &attack03 , &attack04 , &attack05 , &attack07 };
+	ella.SetAttacks(attacks);
 
 	Load();
 
