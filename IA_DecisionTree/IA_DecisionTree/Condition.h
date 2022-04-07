@@ -38,6 +38,14 @@ private:
 	bool* value;
 };
 
+class IsFalseCondition : public Condition {
+public:
+	IsFalseCondition(bool* valueP);
+	bool Test();
+private:
+	bool* value;
+};
+
 class IsEqualZeroCondition : public Condition {
 public:
 	IsEqualZeroCondition(int* valueP);

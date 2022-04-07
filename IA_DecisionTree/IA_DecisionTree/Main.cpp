@@ -20,15 +20,22 @@ int main() {
 
 	TrueCondition trueCondition;
 	IsTrueCondition isInteruptedCondition{ ella.IsInterupted() };
-	IsTrueCondition isCancellable{ ella.GetLoadingAttack()->IsConcellable() };
-	AndCondition interuptAndCancellableCondition{ &isInteruptedCondition, &isCancellable };
+	IsTrueCondition isCancellable{ ella.GetLoadingAttack()->IsCancelable() };
+	AndCondition interuptAndCancelableCondition{ &isInteruptedCondition, &isCancellable };
 	IsEqualZeroCondition waitFinish{ ella.GetWaintingTime() };
+	IsFalseCondition isNotCancelable{ ella.GetLoadingAttack()->IsCancelable() };
+	OrCondition waitOrNotCancelable{ &waitFinish , &isNotCancelable };
 
 	Transition fromChooseToWait{ &waiting, &trueCondition };
-	Transition fromWaitingToGoBack{ &goBack, &interuptAndCancellableCondition };
+	Transition fromWaitingToGoBack{ &goBack, &interuptAndCancelableCondition };
+	Transition fromWaitingToAttack{ &attack, &waitOrNotCancelable };
+	Transition fromSmtgToChoose{ &chooseAttack, &trueCondition };
 
 	chooseAttack.AddTransition(&fromChooseToWait);
 	waiting.AddTransition(&fromWaitingToGoBack);
+	waiting.AddTransition(&fromWaitingToAttack);
+	goBack.AddTransition(&fromSmtgToChoose);
+	attack.AddTransition(&fromSmtgToChoose);
 
 	StateMachine sm{ &chooseAttack };
 

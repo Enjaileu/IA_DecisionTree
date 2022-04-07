@@ -4,7 +4,7 @@ class Attack
 {
 public:
 	Attack(int name, int damage, bool cancelled, int waitingTime);
-	bool* IsConcellable();
+	bool* IsCancelable();
 
 protected:
 	int name;

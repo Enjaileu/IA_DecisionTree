@@ -21,7 +21,12 @@ bool OrCondition::Test() { return conditionA || conditionB; }
 IsTrueCondition::IsTrueCondition(bool* valueP):
 	value{valueP}{}
 
-bool IsTrueCondition::Test() { return *value = true; }
+bool IsTrueCondition::Test() { return *value == true; }
+
+IsFalseCondition::IsFalseCondition(bool* valueP) :
+	value{ valueP } {}
+
+bool IsFalseCondition::Test() { return *value == false; }
 
 IsEqualZeroCondition::IsEqualZeroCondition(int* valueP):
 	value{valueP}{}
