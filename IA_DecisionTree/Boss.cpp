@@ -13,7 +13,7 @@ Attack* Boss::GetLoadingAttack() { return loadingAttack; }
 
 bool* Boss::IsInterupted() { return &interupted; }
 
-int* Boss::GetWaintingTime() { return &waitingTime; }
+int* Boss::GetWaitingTime() { return &waitingTime; }
 
 void Boss::UseAttack() {
 	cout << name << " use her attack " << loadingAttack->GetName() << " and inflict " << loadingAttack->GetDamage() << " damages!" << endl;
@@ -27,6 +27,7 @@ void Boss::Load() {
 
 void Boss::Draw() {
 	Character::Draw();
+	DrawRectangle(800, 300, waitingTime, 10, WHITE);
 }
 
 void Boss::Update(){

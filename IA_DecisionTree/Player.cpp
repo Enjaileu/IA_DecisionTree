@@ -39,3 +39,5 @@ void Player::PlayGame() {
 	stopGame = false;
 	wait = 130;
 }
+
+int* Player::GetPv() { return &pv; }

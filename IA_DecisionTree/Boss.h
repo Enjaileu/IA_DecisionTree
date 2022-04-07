@@ -11,7 +11,7 @@ public:
     Boss(std::string nameP, int PVp, StateMachine* smP, std::string pathP, float xP, float yP);
     Attack* GetLoadingAttack();
     bool* IsInterupted();
-    int* GetWaintingTime();
+    int* GetWaitingTime();
     void UseAttack();
     void Load();
     void Draw();

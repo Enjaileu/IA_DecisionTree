@@ -36,7 +36,7 @@ int main() {
 	IsTrueCondition isInteruptedCondition{ ella.IsInterupted() };
 	IsTrueCondition isCancellable{ ella.GetLoadingAttack()->IsCancelable() };
 	AndCondition interuptAndCancelableCondition{ &isInteruptedCondition, &isCancellable };
-	IsEqualZeroCondition waitFinish{ ella.GetWaintingTime() };
+	IsEqualZeroCondition waitFinish{ ella.GetWaitingTime() };
 	IsFalseCondition isNotCancelable{ ella.GetLoadingAttack()->IsCancelable() };
 	OrCondition waitOrNotCancelable{ &waitFinish , &isNotCancelable };
 
@@ -65,8 +65,14 @@ int main() {
 	vector<Attack*> attacks{ &attack01, &attack03 , &attack04 , &attack05 , &attack07 };
 	ella.SetAttacks(attacks);
 
-	ChooseAttackAction chooseAction{ ella.GetAttacks(), ella.GetLoadingAttack() };
+	ChooseAttackAction chooseAction{ ella.GetAttacks(), ella.GetLoadingAttack(), ella.GetWaitingTime() };
 	chooseAttack.SetAction(&chooseAction);
+	WaitAction wait{ ella.GetWaitingTime() };
+	waiting.SetAction(&wait);
+	AttackAction attackAction{ player.GetPv(), ella.GetLoadingAttack() };
+	attack.SetAction(&attackAction);
+	DoNothingAction nothing;
+	goBack.SetAction(&nothing);
 
 	Load();
 

@@ -16,6 +16,6 @@ public:
 
 protected:
 	std::vector<Transition*> transitions;
-	Action* action;
+	Action* action{ nullptr };
 };
 

@@ -3,7 +3,7 @@
 #include <time.h>
 using std::vector;
 
-ChooseAttackAction::ChooseAttackAction(vector<Attack*> attacksP, Attack* attackP):
+ChooseAttackAction::ChooseAttackAction(vector<Attack*> attacksP, Attack* attackP, int* waintingTimep):
 	attacks{attacksP},
 	attack{ attackP }{}
 
@@ -29,4 +29,23 @@ void ChooseAttackAction::Execute() {
 	else if (randInt > 79 && randInt <= 99) {
 		attack = attacks[5];
 	}
+
+	*waitingTime = attack->GetWaitingTime();
 }
+
+WaitAction::WaitAction(int* waitingTimeP):
+	waitingTime{ waitingTimeP }{}
+
+void WaitAction::Execute() {
+	*waitingTime -=1;
+}
+
+AttackAction::AttackAction(int* pvP, Attack* attackP):
+	pv{pvP},
+	attack{attackP}{}
+
+void AttackAction::Execute() {
+	*pv -= attack->GetDamage();
+}
+
+void DoNothingAction::Execute(){}

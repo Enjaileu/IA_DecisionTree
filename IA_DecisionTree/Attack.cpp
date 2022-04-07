@@ -11,3 +11,5 @@ bool* Attack::IsCancelable() { return &cancelled; }
 int Attack::GetName() { return name; }
 
 int Attack::GetDamage() { return damage; }
+
+int Attack::GetWaitingTime() { return waitingTime; }

@@ -13,6 +13,7 @@ public:
 	void Unload();
 	bool GetStopGame();
 	void PlayGame();
+	int* GetPv();
 
 private:
 	int pv;

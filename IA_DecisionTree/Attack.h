@@ -7,6 +7,7 @@ public:
 	bool* IsCancelable();
 	int GetName();
 	int GetDamage();
+	int GetWaitingTime();
 
 protected:
 	int name;
