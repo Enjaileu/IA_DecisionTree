@@ -5,20 +5,26 @@
 #include "Boss.h"
 #include "StateMachine.h"
 #include "Player.h"
+#include "Sprite.h"
+
+using namespace std;
 
 // DEFINITIONS
 
-void Load(Boss& boss, Player& player);
-void Update(Boss& boss, Player& player);
-void Draw(Boss& boss, Player& player);
-void Unload(Boss& boss, Player& player);
+void Load();
+void Update();
+void Draw();
+void Unload();
+Boss ella;
+Player player;
+Sprite attackBtn{ "Ressources/BoutonAttaquer.png", 30, 600 };
+Sprite potionBtn{ "Ressources/BoutonPotion.png", 280, 600 };
 
 //CODE 
 
 int main() {
 	//load -------------------------
-	Boss ella{};
-	Player player;
+
 
 	Attack attack01{ 1, 70, false, 100 };
 	Attack attack02{ 2, 99999, true, 200 };
@@ -54,43 +60,64 @@ int main() {
 	StateMachine sm{ &chooseAttack };
 
 	ella = { "Ella", 1500, &sm, "Ressources/BossAigle.png", 600, 60};
+	player = { "Player", 625, "Ressources/Player.png", 30, 205 };
 
-	Load(ella, player);
+	Load();
 
 	//game loop 
 	while (!WindowShouldClose()) {
-		Update(ella, player);
-		Draw(ella, player);
+		Update();
+		Draw();
 	}
 
 	//unload
-	Unload(ella, player);
+	Unload();
 
 	return 0;
 }
 
-void Load(Boss& boss, Player& player) {
+void Load() {
 	InitWindow(1080, 720, "Boss fight");
 	SetTargetFPS(60);
-	boss.Load();
+	ella.Load();
+	player.Load();
+	attackBtn.Load();
+	potionBtn.Load();
 }
 
-void Draw(Boss& boss, Player& player) {
+void Draw() {
 	BeginDrawing();
 	ClearBackground(BLACK);
-	
+
 	DrawRectangle(0, 600, 1080, 120, RED);
-	boss.Draw();
+	ella.Draw();
+	player.Draw();
+
+	if (player.GetStopGame()) {
+		attackBtn.Draw();
+		potionBtn.Draw();
+	}
 
 	EndDrawing();
 }
 
-void Update(Boss& boss, Player& player) {
-	boss.Update();
+void Update() {
 	float dt = GetFrameTime();
+	if (!player.GetStopGame()) {
+		ella.Update();
+		player.Update();
+	}
+	else {
+		if (IsKeyPressed(KEY_A) || IsKeyPressed(KEY_P)) {
+			player.PlayGame();
+		}
+	}
 }
 
-void Unload(Boss& boss, Player& player) {
-	boss.Unload();
+void Unload() {
+	ella.Unload();
+	player.Unload();
+	attackBtn.Unload();
+	potionBtn.Unload();
 	CloseWindow();
 }
